@@ -1,0 +1,138 @@
+/**
+ * Settings Panel Styles
+ * 仕様: 2.2.3 設定パネル
+ */
+
+.settings-panel__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  margin-bottom: var(--space-4);
+}
+
+.settings-panel__header:hover {
+  color: var(--color-primary);
+}
+
+.settings-panel__title {
+  margin: 0;
+  font-size: var(--fs-4);
+  font-weight: 600;
+}
+
+.settings-panel__toggle {
+  font-size: var(--fs-2);
+  color: var(--color-subtle);
+  transition: transform var(--dur-fast) var(--ease);
+}
+
+.settings-panel__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* スライダー */
+.slider-field {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.slider-field__input {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--color-border);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.slider-field__input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  cursor: pointer;
+  border: 2px solid var(--color-bg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.slider-field__input::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  cursor: pointer;
+  border: 2px solid var(--color-bg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.slider-field__input:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-focus) 20%, transparent);
+}
+
+.slider-field__input:focus::-moz-range-thumb {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-focus) 20%, transparent);
+}
+
+.slider-field__value {
+  min-width: 48px;
+  text-align: right;
+  font-weight: 500;
+  font-size: var(--fs-3);
+}
+
+/* チェックボックス */
+.checkbox-field {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-field input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--color-primary);
+}
+
+.checkbox-field:hover {
+  color: var(--color-primary);
+}
+
+/* セレクト */
+.app-field__select {
+  min-height: 40px;
+  padding-inline: var(--space-3);
+  font-family: var(--font-sans);
+  font-size: var(--fs-3);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease);
+}
+
+.app-field__select:focus {
+  outline: none;
+  border-color: var(--color-focus);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-focus) 20%, transparent);
+}
+
+.app-field__select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

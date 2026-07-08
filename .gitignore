@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+coverage/
+test-results/
+playwright-report/
+.wrangler/
+.playwright-mcp/
+*.log
+.DS_Store
+.lighthouseci/

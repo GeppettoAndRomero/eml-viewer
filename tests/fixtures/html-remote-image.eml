@@ -1,0 +1,16 @@
+From: Carol Example <carol@example.com>
+To: Dave Example <dave@example.com>
+Subject: HTML email with remote image
+Date: Tue, 13 Jan 2026 10:00:00 +0000
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+<html><body>
+<p>Hello, this is an HTML email with remote content references.</p>
+<img src="http://example.invalid/tracker.png?x=1" width="1" height="1" alt="pixel">
+<img srcset="http://example.invalid/a.png 1x, http://example.invalid/b.png 2x" src="http://example.invalid/a.png" alt="responsive">
+<table background="http://example.invalid/table-bg.png"><tr><td>cell</td></tr></table>
+<div style="background: url('http://example.invalid/style-bg.png'); padding:10px;">styled block</div>
+<p data-marker="remote-image-body-end">End of body.</p>
+</body></html>

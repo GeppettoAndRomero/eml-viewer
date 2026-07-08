@@ -1,0 +1,95 @@
+/**
+ * Design Tokens - CSS Custom Properties
+ * 全てのスタイリングはこれらの変数を使用
+ */
+
+:root {
+  /* カラー - ライトモード */
+  --color-bg: #ffffff;
+  --color-surface: #f7f7f8;
+  --color-text: #111827;
+  --color-subtle: #6b7280;
+  --color-primary: #4f46e5;
+  --color-primary-alpha: rgba(79, 70, 229, 0.1);
+  --color-primary-ink: #ffffff;
+  --color-border: #e5e7eb;
+  --color-border-light: #eef0f2;
+  --color-surface-alt: #eceef1;
+  --color-heading: #0b1220;
+  --color-text-muted: #4b5563; /* gray-600, AA on white (~7.4:1) */
+  --color-success: #16a34a;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-focus: #1d4ed8;
+  --color-primary-dark: #4338ca;
+
+  /* 版面と余白 */
+  --size-container: 440px;
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* タイポグラフィ */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Noto Sans JP",
+               "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", Arial, sans-serif;
+  --fs-1: 12px;
+  --fs-2: 14px;
+  --fs-3: 16px;
+  --fs-4: 18px;
+  --fs-5: 22px;
+  --lh-tight: 1.25;
+  --lh-normal: 1.5;
+
+  /* 影・モーション */
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-2: 0 4px 12px rgba(0, 0, 0, 0.10);
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dur-fast: 120ms;
+  --dur-mid: 200ms;
+
+  /* システム */
+  color-scheme: light;
+}
+
+/* ライトモード（明示的） */
+[data-theme="light"] {
+  color-scheme: light;
+}
+
+/* ダークモード（明示的） */
+[data-theme="dark"] {
+  --color-bg: #0f1419;
+  --color-surface: #1a1f26;
+  --color-text: #e4e7eb;
+  --color-subtle: #9ca3af;
+  --color-primary: #6366f1;
+  --color-primary-alpha: rgba(99, 102, 241, 0.15);
+  --color-primary-ink: #ffffff;
+  --color-border: #374151;
+  --color-border-light: #2a313c;
+  --color-surface-alt: #222a33;
+  --color-heading: #f3f4f6;
+  --color-text-muted: #c2c9d2; /* AA on dark bg */
+  --color-success: #22c55e;
+  --color-warning: #fbbf24;
+  --color-danger: #f87171;
+  --color-focus: #3b82f6;
+  --color-primary-dark: #818cf8;
+
+  /* 影は暗い背景では控えめに */
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-2: 0 4px 12px rgba(0, 0, 0, 0.4);
+
+  color-scheme: dark;
+}
+
+/* デフォルトはライトモードを使用 */
+/* システム設定によるダークモード自動切り替えは無効化 */

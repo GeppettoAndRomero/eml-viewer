@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://runlocally.app/eml-viewer/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://runlocally.app/eml-viewer/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://runlocally.app/eml-viewer/ja/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://runlocally.app/eml-viewer/zh/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://runlocally.app/eml-viewer/de/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://runlocally.app/eml-viewer/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://runlocally.app/eml-viewer/"/>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://runlocally.app/eml-viewer/ja/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://runlocally.app/eml-viewer/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://runlocally.app/eml-viewer/ja/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://runlocally.app/eml-viewer/zh/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://runlocally.app/eml-viewer/de/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://runlocally.app/eml-viewer/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://runlocally.app/eml-viewer/"/>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://runlocally.app/eml-viewer/zh/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://runlocally.app/eml-viewer/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://runlocally.app/eml-viewer/ja/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://runlocally.app/eml-viewer/zh/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://runlocally.app/eml-viewer/de/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://runlocally.app/eml-viewer/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://runlocally.app/eml-viewer/"/>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://runlocally.app/eml-viewer/de/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://runlocally.app/eml-viewer/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://runlocally.app/eml-viewer/ja/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://runlocally.app/eml-viewer/zh/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://runlocally.app/eml-viewer/de/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://runlocally.app/eml-viewer/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://runlocally.app/eml-viewer/"/>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://runlocally.app/eml-viewer/es/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://runlocally.app/eml-viewer/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://runlocally.app/eml-viewer/ja/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://runlocally.app/eml-viewer/zh/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://runlocally.app/eml-viewer/de/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://runlocally.app/eml-viewer/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://runlocally.app/eml-viewer/"/>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+</urlset>

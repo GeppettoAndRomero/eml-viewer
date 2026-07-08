@@ -1,0 +1,19 @@
+From: Eve Attacker <eve@example.com>
+To: Target <target@example.com>
+Subject: XSS attempt
+Date: Thu, 15 Jan 2026 12:00:00 +0000
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+<html><body>
+<script>window.__xssFired = true;</script>
+<img src="x" onerror="window.__xssFired = true">
+<svg onload="window.__xssFired = true"></svg>
+<a id="jslink" href="javascript:window.__xssFired = true">click me</a>
+<iframe src="https://example.invalid/pwn"></iframe>
+<style>body { background: url(http://example.invalid/style-track.png); }</style>
+<div style="background:url(http://example.invalid/inline-style-track.png)">block</div>
+<table background="http://example.invalid/table-track.png"><tr><td>x</td></tr></table>
+<p id="safe-marker">Legitimate paragraph that should remain visible.</p>
+</body></html>

@@ -1,0 +1,14 @@
+From: Alice Example <alice@example.com>
+To: Bob Example <bob@example.com>
+Subject: Simple plain text test
+Date: Mon, 12 Jan 2026 09:30:00 +0000
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+Hello Bob,
+
+This is a simple plain-text test email for eml-viewer.
+
+Regards,
+Alice

@@ -1,0 +1,214 @@
+/**
+ * Base Styles - グローバルスタイル
+ */
+
+/* リセット */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-3);
+  line-height: var(--lh-normal);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* PWAモード時はbody全体の幅を制限 */
+@media (display-mode: standalone) {
+  body {
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* タイポグラフィ */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: var(--lh-tight);
+  margin-bottom: var(--space-3);
+}
+
+h1 {
+  font-size: var(--fs-5);
+}
+
+h2 {
+  font-size: var(--fs-4);
+}
+
+h3 {
+  font-size: var(--fs-3);
+}
+
+p {
+  margin-bottom: var(--space-3);
+}
+
+small {
+  font-size: var(--fs-1);
+}
+
+/* 数字の桁揃え */
+.num {
+  font-variant-numeric: tabular-nums slashed-zero;
+}
+
+/* レイアウト */
+.container {
+  max-width: var(--size-container);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+/* PWAモード（スタンドアロン）での追加調整 */
+@media (display-mode: standalone) {
+  .container {
+    max-width: 440px;
+  }
+}
+
+/* ヘッダー */
+header {
+  border-bottom: 1px solid var(--color-border);
+  padding-block: var(--space-5);
+  background-color: var(--color-bg);
+}
+
+header h1 {
+  margin-bottom: var(--space-2);
+}
+
+header p {
+  color: var(--color-subtle);
+  margin-bottom: 0;
+}
+
+/* メイン */
+main {
+  flex: 1;
+  padding-block: var(--space-6);
+}
+
+main section {
+  margin-bottom: var(--space-6);
+  padding: var(--space-6);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-1);
+}
+
+main section h2 {
+  margin-bottom: var(--space-4);
+}
+
+/* フッター */
+footer {
+  border-top: 1px solid var(--color-border);
+  padding-block: var(--space-5);
+  color: var(--color-subtle);
+  font-size: var(--fs-2);
+  text-align: center;
+}
+
+/* フォーカス表示 */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+/* リンク */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* In-prose links must be distinguishable without relying on colour (WCAG 1.4.1). */
+.seo-content a,
+footer small a {
+  text-decoration: underline;
+}
+
+/* ボタン基本 */
+button {
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* 入力基本 */
+input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* タップ領域最小サイズ（アクセシビリティ） */
+button, a, input, select, textarea {
+  min-height: 44px;
+}
+
+/* ユーティリティ */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

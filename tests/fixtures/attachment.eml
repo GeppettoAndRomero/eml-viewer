@@ -1,0 +1,35 @@
+From: Frank Example <frank@example.com>
+To: Grace Example <grace@example.com>
+Subject: Email with an inline image and an attachment
+Date: Fri, 16 Jan 2026 13:30:00 +0000
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="MIXED-BOUNDARY-1"
+
+--MIXED-BOUNDARY-1
+Content-Type: multipart/related; boundary="RELATED-BOUNDARY-2"
+
+--RELATED-BOUNDARY-2
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+<html><body>
+<p>See the inline logo below and the attached notes file.</p>
+<img src="cid:logo123@example.com" alt="logo">
+</body></html>
+
+--RELATED-BOUNDARY-2
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-ID: <logo123@example.com>
+Content-Disposition: inline; filename="logo.png"
+
+iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=
+--RELATED-BOUNDARY-2--
+
+--MIXED-BOUNDARY-1
+Content-Type: text/plain; name="notes.txt"
+Content-Disposition: attachment; filename="notes.txt"
+Content-Transfer-Encoding: base64
+
+aGVsbG8gYXR0YWNobWVudAo=
+--MIXED-BOUNDARY-1--

@@ -1,0 +1,179 @@
+---
+// 全ロケール共通のツールページ layout。content と locale を受け取り、
+// head（meta / canonical / hreflang / OG / JSON-LD）と body をデータから描画する。
+import '@/styles/tokens.css';
+import '@/styles/base.css';
+import '@/styles/components.css';
+import '@/styles/file-upload.css';
+import '@/styles/settings.css';
+import '@/styles/seo-content.css';
+import { EmlViewer } from '@/widgets/EmlViewer';
+import { InstallPrompt } from '@/widgets/InstallPrompt';
+import { ThemeToggle } from '@/widgets/ThemeToggle';
+import { GlobalDropZone } from '@/widgets/GlobalDropZone';
+import type { ToolContent } from '@/i18n/types';
+import { SITE, REPO, localePath, hreflangs } from '@/i18n/config';
+
+interface Props {
+  content: ToolContent;
+  locale: string;
+}
+
+const { content: c, locale } = Astro.props;
+
+const canonical = localePath(locale);
+const alts = hreflangs();
+const ogImage = `${SITE}/eml-viewer/icon-512.png`;
+
+const appLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: c.meta.ogTitle,
+  applicationCategory: 'UtilitiesApplication',
+  operatingSystem: 'Any (modern web browser)',
+  browserRequirements: 'Requires a modern browser with JavaScript.',
+  url: canonical,
+  inLanguage: c.htmlLang,
+  isAccessibleForFree: true,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  featureList: [
+    c.hero.h1,
+    'Runs entirely in the browser — no upload',
+    'Sanitized, sandboxed rendering of the HTML body',
+    'No remote images or styles are ever loaded',
+    'Works offline (PWA)',
+    'Open source (MIT)',
+  ],
+};
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  inLanguage: c.htmlLang,
+  mainEntity: c.faq.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<!DOCTYPE html>
+<html lang={c.htmlLang}>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{c.meta.title}</title>
+  <meta name="description" content={c.meta.description}>
+
+  <link rel="canonical" href={canonical}>
+  <meta name="robots" content="index, follow">
+  {alts.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
+
+  <!-- PWA -->
+  <link rel="manifest" href="/eml-viewer/manifest.json">
+  <meta name="theme-color" content="#6366f1">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1e1b4b">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content={c.hero.h1}>
+  <link rel="apple-touch-icon" href="/eml-viewer/icon-192.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/eml-viewer/icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/eml-viewer/icon-512.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content={canonical}>
+  <meta property="og:title" content={c.meta.ogTitle}>
+  <meta property="og:description" content={c.meta.ogDescription}>
+  <meta property="og:image" content={ogImage}>
+  <meta property="og:locale" content={c.htmlLang}>
+  <meta property="og:site_name" content="runlocally">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content={c.meta.ogTitle}>
+  <meta name="twitter:description" content={c.meta.ogDescription}>
+  <meta name="twitter:image" content={ogImage}>
+
+  <script type="application/ld+json" set:html={JSON.stringify(appLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>{c.hero.h1}</h1>
+      <p>{c.hero.tagline}</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <EmlViewer client:load locale={locale} />
+
+    <div class="seo-content">
+      <section class="content-section">
+        <h2>{c.intro.h2}</h2>
+        {c.intro.paras.map((p) => <p>{p}</p>)}
+      </section>
+
+      <section class="content-section">
+        <h2>{c.privacy.h2}</h2>
+        <p>{c.privacy.lead}</p>
+        <ul class="use-cases">
+          {c.privacy.points.map((pt) => <li>{pt}</li>)}
+        </ul>
+        <p>{c.privacy.note} <a href={REPO} rel="noopener">{c.privacy.sourceLinkText}</a></p>
+      </section>
+
+      <section class="content-section">
+        <h2>{c.howto.h2}</h2>
+        <ol class="usage-steps">
+          {c.howto.steps.map((s) => (
+            <li>
+              <h3>{s.h3}</h3>
+              <p>{s.p}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section class="content-section">
+        <h2>{c.faqHeading}</h2>
+        {c.faq.map((f) => (
+          <details class="faq-item">
+            <summary><h3>{f.q}</h3></summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </section>
+    </div>
+  </main>
+
+  <InstallPrompt client:load locale={locale} />
+  <GlobalDropZone client:load locale={locale} />
+
+  <footer>
+    <div class="container">
+      <div style="display: flex; justify-content: center; margin: var(--space-4) 0;">
+        <ThemeToggle client:load locale={locale} />
+      </div>
+      <p>
+        <small>
+          <a href={REPO} rel="noopener">{c.footer.openSourceLabel}</a> ·
+          <a href={`${REPO}/blob/main/SECURITY.md`} rel="noopener">{c.footer.securityText}</a> · {c.footer.partOf}
+          <a href="https://runlocally.app/" rel="noopener">runlocally</a> {c.footer.brandTail}<br>
+          {c.footer.colophon}
+        </small>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    import { registerServiceWorker } from '@/utils/registerSW';
+    if (import.meta.env.PROD) {
+      registerServiceWorker();
+    }
+  </script>
+</body>
+</html>

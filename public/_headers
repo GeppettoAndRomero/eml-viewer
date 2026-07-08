@@ -1,0 +1,42 @@
+## セキュリティヘッダー設定
+## Cloudflare Pages用
+
+/*
+  # セキュリティヘッダー
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+
+  # Content Security Policy
+  # Sandboxed same-document iframe (srcdoc) for the email body; no Worker/WASM needed.
+  # frame-src is not set so it falls back to default-src 'self' — the srcdoc frame
+  # inherits this document's origin/CSP, so the sandboxed iframe is permitted while a
+  # remote frame src would not be.
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' blob:; worker-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+
+# ハッシュ付きバンドルだけ immutable にする。
+# 注意: Cloudflare の _headers は同一ヘッダ名を「結合」するため、immutable を /* に
+# 置くと HTML/SW/manifest にも乗り、再デプロイが返訪者・SW precache に伝播しなくなる。
+# 必ず content-hash 済みの /eml-viewer/_assets/ だけに限定する。
+/eml-viewer/_assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Service Worker: 常に revalidate（更新を確実に伝播させる）
+/eml-viewer/sw.js
+  Cache-Control: public, max-age=0, must-revalidate
+  Service-Worker-Allowed: /eml-viewer/
+
+# Manifest: 短期キャッシュ
+/eml-viewer/manifest.json
+  Cache-Control: public, max-age=3600
+
+# Post-cutover: the router strips this on runlocally.app, so only the *.pages.dev
+# origin is noindexed (apex is the sole indexable surface).
+/eml-viewer/*
+  X-Robots-Tag: noindex
+
+# Router-fronted tool: the *.pages.dev origin is noindex; the front-router strips
+# X-Robots-Tag on runlocally.app responses so the apex is the only indexed surface.
+/eml-viewer/*
+  X-Robots-Tag: noindex

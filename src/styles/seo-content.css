@@ -1,0 +1,371 @@
+/* SEOコンテンツ用スタイル */
+
+/* SEOコンテンツ全体のコンテナ */
+.seo-content {
+  margin-top: var(--space-8);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-border);
+}
+
+/* コンテンツセクション */
+.content-section {
+  margin-bottom: var(--space-8);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.content-section h2 {
+  color: var(--color-heading);
+  font-size: var(--fs-4);
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-2);
+  border-bottom: 2px solid var(--color-primary);
+  position: relative;
+}
+
+.content-section h3 {
+  color: var(--color-heading);
+  font-size: var(--fs-3);
+  font-weight: 600;
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-2);
+}
+
+.content-section p {
+  color: var(--color-text);
+  line-height: 1.8;
+  margin-bottom: var(--space-3);
+}
+
+.content-section ul,
+.content-section ol {
+  margin-bottom: var(--space-3);
+  padding-left: var(--space-6);
+}
+
+.content-section li {
+  margin-bottom: var(--space-2);
+  line-height: 1.8;
+}
+
+/* 使い方ステップ */
+.usage-steps {
+  counter-reset: step-counter;
+  list-style: none;
+  padding-left: 0;
+}
+
+.usage-steps li {
+  position: relative;
+  padding-left: 60px;
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.usage-steps li:last-child {
+  border-bottom: none;
+}
+
+.usage-steps li::before {
+  content: counter(step-counter);
+  counter-increment: step-counter;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  background: var(--color-primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: var(--fs-3);
+}
+
+.usage-steps h3 {
+  margin-top: 0;
+  margin-bottom: var(--space-2);
+  color: var(--color-heading);
+}
+
+.usage-steps p {
+  color: var(--color-text-muted);
+  margin-bottom: 0;
+}
+
+/* 特徴グリッド */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-4);
+}
+
+.feature-item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-2);
+  border-color: var(--color-primary);
+}
+
+.feature-item h3 {
+  margin-top: 0;
+  margin-bottom: var(--space-3);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-3);
+}
+
+.feature-item p {
+  color: var(--color-text-muted);
+  margin-bottom: 0;
+  font-size: var(--fs-2);
+}
+
+/* 技術仕様 */
+.tech-specs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-4);
+}
+
+.spec-group {
+  background: var(--color-surface-alt);
+  border-left: 4px solid var(--color-primary);
+  padding: var(--space-4);
+  border-radius: var(--radius-sm);
+}
+
+.spec-group h3 {
+  margin-top: 0;
+  margin-bottom: var(--space-3);
+  color: var(--color-primary);
+}
+
+.spec-group ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.spec-group li {
+  padding-left: var(--space-4);
+  position: relative;
+  margin-bottom: var(--space-2);
+}
+
+.spec-group li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+}
+
+/* FAQ */
+.faq-item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-3);
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.faq-item:hover {
+  border-color: var(--color-primary);
+}
+
+.faq-item[open] {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-1);
+}
+
+.faq-item summary {
+  padding: var(--space-4);
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s ease;
+  list-style: none;
+  position: relative;
+  padding-right: var(--space-8);
+}
+
+.faq-item summary:hover {
+  background: var(--color-surface-alt);
+}
+
+.faq-item summary::marker,
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "＋";
+  position: absolute;
+  right: var(--space-4);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: var(--fs-4);
+  color: var(--color-primary);
+  transition: transform 0.3s ease;
+}
+
+.faq-item[open] summary::after {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.faq-item summary h3 {
+  margin: 0;
+  font-size: var(--fs-3);
+  color: var(--color-heading);
+  font-weight: 600;
+  display: inline;
+}
+
+.faq-item > p,
+.faq-item > ul {
+  padding: 0 var(--space-4) var(--space-4);
+}
+
+.faq-item p {
+  color: var(--color-text);
+  line-height: 1.8;
+}
+
+/* ユースケース */
+.use-cases {
+  list-style: none;
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-3);
+}
+
+.use-cases li {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+  position: relative;
+  padding-left: var(--space-8);
+  transition: all 0.3s ease;
+}
+
+.use-cases li:hover {
+  border-color: var(--color-primary);
+  transform: translateX(4px);
+  background: var(--color-surface-alt);
+}
+
+.use-cases li::before {
+  content: "✓";
+  position: absolute;
+  left: var(--space-3);
+  color: var(--color-success);
+  font-weight: 700;
+  font-size: var(--fs-3);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tech-specs {
+    grid-template-columns: 1fr;
+  }
+
+  .use-cases {
+    grid-template-columns: 1fr;
+  }
+
+  .usage-steps li {
+    padding-left: 50px;
+  }
+
+  .usage-steps li::before {
+    width: 34px;
+    height: 34px;
+    font-size: var(--fs-2);
+  }
+}
+
+/* アニメーション */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* アクセシビリティ向上 */
+@media (prefers-reduced-motion: reduce) {
+  .content-section,
+  .feature-item,
+  .faq-item,
+  .use-cases li {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* ダークモード対応 */
+@media (prefers-color-scheme: dark) {
+  .feature-item {
+    background: var(--color-surface);
+    border-color: var(--color-border);
+  }
+
+  .spec-group {
+    background: var(--color-surface);
+  }
+
+  .faq-item {
+    background: var(--color-surface);
+  }
+
+  .use-cases li {
+    background: var(--color-surface);
+  }
+
+  .content-section h2 {
+    border-bottom-color: var(--color-primary-dark);
+  }
+}
+
+/* プリント対応 */
+@media print {
+  .seo-content {
+    page-break-inside: avoid;
+  }
+
+  .feature-item,
+  .faq-item,
+  .spec-group {
+    page-break-inside: avoid;
+  }
+
+  .faq-item[open] {
+    border: 1px solid #000;
+  }
+
+  .faq-item summary::after {
+    display: none;
+  }
+}

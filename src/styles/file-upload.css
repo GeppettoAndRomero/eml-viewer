@@ -1,0 +1,86 @@
+/**
+ * Eml Viewer styles — dropzone and error panel (message layout uses component
+ * classes from components.css plus inline styles in the widget).
+ */
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ========================================
+   Dropzone
+   ======================================== */
+
+.eml-dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  width: 100%;
+  min-height: 180px;
+  padding: var(--space-6);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg);
+  cursor: pointer;
+  text-align: center;
+  transition: all var(--dur-fast) var(--ease);
+}
+
+.eml-dropzone:hover {
+  border-color: var(--color-primary);
+  background-color: color-mix(in srgb, var(--color-primary) 5%, var(--color-bg));
+}
+
+.eml-dropzone:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.eml-dropzone__icon {
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: var(--space-2);
+  opacity: 0.7;
+}
+
+.eml-dropzone__title {
+  font-size: var(--fs-3);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.eml-dropzone__hint {
+  font-size: var(--fs-1);
+  color: var(--color-subtle);
+}
+
+/* ========================================
+   Error panel
+   ======================================== */
+
+.eml-error {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+  padding: var(--space-4);
+  background-color: color-mix(in srgb, var(--color-danger) 8%, var(--color-bg));
+  border: 1px solid var(--color-danger);
+  border-left: 4px solid var(--color-danger);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font-size: var(--fs-2);
+}
+
+.eml-error__icon {
+  color: var(--color-danger);
+  font-size: var(--fs-3);
+  line-height: 1.3;
+  flex-shrink: 0;
+}
+
+.mt-6 {
+  margin-top: var(--space-6);
+}
