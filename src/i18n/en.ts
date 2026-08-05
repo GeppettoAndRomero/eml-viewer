@@ -4,16 +4,16 @@ export const en: ToolContent = {
   htmlLang: 'en',
 
   meta: {
-    title: 'Eml Viewer — Open .eml Email Files in Your Browser, No Upload | runlocally',
+    title: 'EML Viewer — Open .eml Email Files in Your Browser, No Upload | runlocally',
     description:
       'Open a saved .eml email file in your browser and read its headers, body and attachments. The file is read on your device and never uploaded. Remote images and styles in the body are never loaded. Handles Shift_JIS and ISO-2022-JP Japanese mail correctly. Open source, works offline.',
-    ogTitle: 'Eml Viewer — Open .eml Email Files in Your Browser, No Upload',
+    ogTitle: 'EML Viewer — Open .eml Email Files in Your Browser, No Upload',
     ogDescription:
       'Read a .eml file — headers, body and attachments — entirely in your browser. Nothing is uploaded, and no remote content in the message is fetched. Open source, works offline.',
   },
 
   hero: {
-    h1: 'Eml Viewer',
+    h1: 'EML Viewer',
     tagline:
       'Open a saved .eml email file and read its headers, body and attachments in your browser. Nothing is uploaded.',
   },

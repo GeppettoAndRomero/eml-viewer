@@ -4,16 +4,16 @@ export const es: ToolContent = {
   htmlLang: 'es',
 
   meta: {
-    title: 'Eml Viewer — Abre archivos de correo .eml en tu navegador, sin subirlos | runlocally',
+    title: 'EML Viewer — Abre archivos de correo .eml en tu navegador, sin subirlos | runlocally',
     description:
       'Abre un archivo de correo .eml guardado en tu navegador y lee sus encabezados, cuerpo y archivos adjuntos. El archivo se lee en tu dispositivo y nunca se sube. Las imágenes y estilos remotos del cuerpo nunca se cargan. Muestra correctamente correos japoneses en Shift_JIS e ISO-2022-JP. Código abierto, funciona sin conexión.',
-    ogTitle: 'Eml Viewer — Abre archivos de correo .eml en tu navegador, sin subirlos',
+    ogTitle: 'EML Viewer — Abre archivos de correo .eml en tu navegador, sin subirlos',
     ogDescription:
       'Consulta encabezados, cuerpo y adjuntos de un archivo .eml directamente en tu navegador. Sin subida y sin conexiones externas desde el cuerpo del mensaje. Código abierto, funciona sin conexión.',
   },
 
   hero: {
-    h1: 'Eml Viewer',
+    h1: 'EML Viewer',
     tagline:
       'Abre un archivo de correo .eml guardado y lee sus encabezados, cuerpo y adjuntos en tu navegador. Sin subirlo.',
   },

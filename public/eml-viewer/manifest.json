@@ -1,6 +1,6 @@
 {
-  "name": "Eml Viewer \u2014 runlocally",
-  "short_name": "Eml Viewer",
+  "name": "EML Viewer \u2014 runlocally",
+  "short_name": "EML Viewer",
   "description": "Open a saved .eml email in your browser. Nothing is uploaded. Works offline.",
   "start_url": "/eml-viewer/",
   "display": "standalone",

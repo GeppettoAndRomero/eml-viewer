@@ -9,16 +9,16 @@ export const ja: ToolContent = {
   htmlLang: 'ja',
 
   meta: {
-    title: 'Eml Viewer — .eml メールファイルをブラウザで開く・アップロード不要 | runlocally',
+    title: 'EML Viewer — .eml メールファイルをブラウザで開く・アップロード不要 | runlocally',
     description:
       '保存した .eml メールファイルをブラウザで開き、ヘッダー・本文・添付ファイルを表示します。ファイルは端末内で読み込まれ、サーバーに送信されません。本文中のリモート画像やスタイルは読み込みません。Shift_JIS・ISO-2022-JP の日本語メールも正しく表示します。オープンソース、オフライン対応。',
-    ogTitle: 'Eml Viewer — .eml メールファイルをブラウザで開く・アップロード不要',
+    ogTitle: 'EML Viewer — .eml メールファイルをブラウザで開く・アップロード不要',
     ogDescription:
       '.eml ファイルのヘッダー・本文・添付ファイルをブラウザだけで確認。アップロードなし、本文からの外部通信もなし。オープンソース、オフライン対応。',
   },
 
   hero: {
-    h1: 'Eml Viewer',
+    h1: 'EML Viewer',
     tagline: '保存した .eml メールファイルを、ブラウザでそのまま開いて読めます。アップロードはありません。',
   },
 

@@ -9,16 +9,16 @@ export const zh: ToolContent = {
   htmlLang: 'zh-Hans',
 
   meta: {
-    title: 'Eml Viewer — 在浏览器内打开 .eml 邮件文件，无需上传 | runlocally',
+    title: 'EML Viewer — 在浏览器内打开 .eml 邮件文件，无需上传 | runlocally',
     description:
       '在浏览器内打开保存的 .eml 邮件文件，查看邮件头、正文和附件。文件在你的设备上读取，不会上传到服务器。正文中的远程图片和样式不会被加载。正确处理 Shift_JIS、ISO-2022-JP 编码的日文邮件。开源，支持离线。',
-    ogTitle: 'Eml Viewer — 在浏览器内打开 .eml 邮件文件，无需上传',
+    ogTitle: 'EML Viewer — 在浏览器内打开 .eml 邮件文件，无需上传',
     ogDescription:
       '在浏览器内查看 .eml 邮件的邮件头、正文和附件。不会上传，正文也不会发起任何外部请求。开源，支持离线。',
   },
 
   hero: {
-    h1: 'Eml Viewer',
+    h1: 'EML Viewer',
     tagline: '在浏览器内打开保存的 .eml 邮件文件，查看邮件头、正文和附件。不会上传。',
   },
 
