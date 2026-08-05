@@ -10,6 +10,7 @@
     "astro": "astro",
     "lint": "eslint .",
     "type-check": "astro check",
+    "license:check": "license-checker --production --summary --onlyAllow \"MIT;ISC;BSD-2-Clause;BSD-3-Clause;Apache-2.0;0BSD;CC0-1.0;Unlicense;LGPL-3.0;LGPL-3.0-or-later;LGPL-2.1;LGPL-2.1-or-later;Python-2.0;CC-BY-4.0\"",
     "test": "vitest run",
     "test:unit": "vitest run",
     "test:watch": "vitest",
@@ -36,6 +37,7 @@
     "eslint": "^9.39.4",
     "eslint-plugin-astro": "^1.7.0",
     "jsdom": "^25.0.1",
+    "license-checker": "^25.0.1",
     "typescript": "^5.6.3",
     "typescript-eslint": "^8.62.0",
     "vitest": "^2.1.9"
