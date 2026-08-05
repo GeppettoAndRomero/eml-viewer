@@ -13,7 +13,7 @@
   # frame-src is not set so it falls back to default-src 'self' — the srcdoc frame
   # inherits this document's origin/CSP, so the sandboxed iframe is permitted while a
   # remote frame src would not be.
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' blob:; worker-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-WN0hqek1jEauhlhWVVXeQPa5BD3f0rsMdmwSZtw1Cys=' 'sha256-Fab3F3nYaHlx/9/a1WBsYunqMLhHCFsGfsl/ooFVn68=' blob:; worker-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
 
 # ハッシュ付きバンドルだけ immutable にする。
 # 注意: Cloudflare の _headers は同一ヘッダ名を「結合」するため、immutable を /* に
@@ -33,10 +33,5 @@
 
 # Post-cutover: the router strips this on runlocally.app, so only the *.pages.dev
 # origin is noindexed (apex is the sole indexable surface).
-/eml-viewer/*
-  X-Robots-Tag: noindex
-
-# Router-fronted tool: the *.pages.dev origin is noindex; the front-router strips
-# X-Robots-Tag on runlocally.app responses so the apex is the only indexed surface.
 /eml-viewer/*
   X-Robots-Tag: noindex
