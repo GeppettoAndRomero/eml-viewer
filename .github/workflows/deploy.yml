@@ -7,6 +7,13 @@
 # `wrangler pages deploy` auto-creates the Pages project on first run. The only
 # Cloudflare interaction is a one-time API token, set as repo secrets by
 # handbook/bin/deploy-onboard.sh — never a manual step per new repo.
+#
+# The "Update sitemap lastmod" step (#178) rewrites public/<slug>/sitemap.xml's
+# <lastmod> per URL from that locale's own content git history (its index.astro +
+# i18n/<locale>.ts, via `git log -1 -- <paths>`) — NOT a blanket "today" stamp on
+# every deploy. A deploy that touches only e.g. CI config or an unrelated tool's
+# engine leaves every lastmod untouched; only a locale whose copy actually changed
+# gets a new date. This needs full history (fetch-depth: 0 below) to be accurate.
 name: Deploy
 
 on:
@@ -26,10 +33,60 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # full history — needed for accurate per-file lastmod below
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
+
+      - name: Update sitemap lastmod from content history
+        run: |
+          node <<'NODE'
+          const { execSync } = require('node:child_process');
+          const { readFileSync, writeFileSync, existsSync } = require('node:fs');
+
+          const slug = JSON.parse(readFileSync('package.json', 'utf8')).name;
+          const sitemapPath = `public/${slug}/sitemap.xml`;
+          if (!existsSync(sitemapPath)) { console.log('no public/<slug>/sitemap.xml, skipping'); process.exit(0); }
+
+          let xml = readFileSync(sitemapPath, 'utf8');
+          let changed = 0;
+
+          for (const loc of ['', 'ja', 'zh', 'de', 'es']) {
+            const locUrl = `https://runlocally.app/${slug}/${loc ? loc + '/' : ''}`;
+            const pageFile = `src/pages/${slug}/${loc ? loc + '/' : ''}index.astro`;
+            const i18nFile = `src/i18n/${loc || 'en'}.ts`;
+            const paths = [pageFile, i18nFile].filter(existsSync);
+            if (paths.length === 0) continue;
+
+            let date = '';
+            try {
+              date = execSync(
+                `git log -1 --format=%cd --date=short -- ${paths.map((p) => `"${p}"`).join(' ')}`,
+                { encoding: 'utf8' },
+              ).trim();
+            } catch { /* no git history available — leave lastmod untouched */ }
+            if (!date) continue;
+
+            const escapedUrl = locUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const blockRe = new RegExp(`(<loc>${escapedUrl}</loc>[\\s\\S]*?<lastmod>)([^<]+)(</lastmod>)`);
+            const m = xml.match(blockRe);
+            if (m && m[2] !== date) {
+              xml = xml.replace(blockRe, `$1${date}$3`);
+              changed++;
+              console.log(`  ${locUrl}: ${m[2]} -> ${date}`);
+            }
+          }
+
+          if (changed > 0) {
+            writeFileSync(sitemapPath, xml);
+            console.log(`sitemap lastmod: ${changed} url(s) updated from content git history`);
+          } else {
+            console.log('sitemap lastmod: no content changes detected, left as-is');
+          }
+          NODE
+
       - run: npm ci
       - run: npm run build
 
