@@ -96,4 +96,9 @@ export const en: ToolContent = {
       "Built and maintained by Geppetto. Some code is written with AI assistance; all review and decisions are the maintainer's.",
     securityText: 'Security',
   },
+
+  related: {
+    h2: 'Related tools',
+    blogLinkText: 'Read the technical notes',
+  },
 };

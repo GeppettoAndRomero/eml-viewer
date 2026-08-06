@@ -12,7 +12,8 @@ import { InstallPrompt } from '@/widgets/InstallPrompt';
 import { ThemeToggle } from '@/widgets/ThemeToggle';
 import { GlobalDropZone } from '@/widgets/GlobalDropZone';
 import type { ToolContent } from '@/i18n/types';
-import { SITE, REPO, localePath, hreflangs } from '@/i18n/config';
+import { SITE, REPO, localePath, hreflangs, toolPath } from '@/i18n/config';
+import { RELATED_TOOLS, BLOG_SLUG } from '@/data/relatedTools.generated';
 
 interface Props {
   content: ToolContent;
@@ -23,6 +24,7 @@ const { content: c, locale } = Astro.props;
 
 const canonical = localePath(locale);
 const alts = hreflangs();
+const blogUrl = BLOG_SLUG ? `${SITE}/blog/${BLOG_SLUG}/` : null;
 const ogImage = `${SITE}/eml-viewer/icon-512.png`;
 
 const appLd = {
@@ -147,6 +149,28 @@ const faqLd = {
           </details>
         ))}
       </section>
+
+      {RELATED_TOOLS.length > 0 && (
+        <section class="content-section related-tools" aria-labelledby="related-tools-heading">
+          <h2 id="related-tools-heading">{c.related.h2}</h2>
+          <div class="related-tools-grid">
+            {RELATED_TOOLS.map((t) => (
+              <a class="related-tool-card" href={toolPath(t.slug, locale)}>
+                <span class="related-tool-card__icon" aria-hidden="true">{t.icon}</span>
+                <span class="related-tool-card__body">
+                  <span class="related-tool-card__name">{t.name[locale] ?? t.name.en}</span>
+                  <span class="related-tool-card__desc">{t.desc[locale] ?? t.desc.en}</span>
+                </span>
+              </a>
+            ))}
+          </div>
+          {blogUrl && (
+            <p class="related-tools-blog-link">
+              <a href={blogUrl} rel="noopener">{c.related.blogLinkText} →</a>
+            </p>
+          )}
+        </section>
+      )}
     </div>
   </main>
 

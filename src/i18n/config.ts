@@ -24,9 +24,18 @@ export const CONTENT: Record<string, ToolContent> = {
 
 export const LOCALES = Object.keys(CONTENT);
 
-/** ロケールの公開 URL（slug-first）。en は /<slug>/、他は /<slug>/<locale>/。 */
+/**
+ * 任意ツール（slug）のロケール別公開 URL（slug-first）。en は /<slug>/、他は /<slug>/<locale>/。
+ * 全アクティブツールが同じ slug-first 規約（NAMESPACE-ROUTING）に従うため、関連ツールセクション
+ * （#177）がリンク先ツールの URL を組み立てるのに使う。
+ */
+export function toolPath(slug: string, locale: string): string {
+  return locale === 'en' ? `${SITE}/${slug}/` : `${SITE}/${slug}/${locale}/`;
+}
+
+/** このツール自身のロケール別公開 URL。 */
 export function localePath(locale: string): string {
-  return locale === 'en' ? `${SITE}/${SLUG}/` : `${SITE}/${SLUG}/${locale}/`;
+  return toolPath(SLUG, locale);
 }
 
 /** 公開済み全ロケール + x-default(=en) の hreflang alternates。 */

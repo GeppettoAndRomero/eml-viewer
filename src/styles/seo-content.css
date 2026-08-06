@@ -277,6 +277,75 @@
   font-size: var(--fs-3);
 }
 
+/* 関連ツール・技術記事 (#177) */
+.related-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+/* text-decoration is intentionally NOT overridden here: `.seo-content a` (base.css) keeps this
+   link underlined per WCAG 1.4.1 (links distinguishable without relying on colour alone). */
+.related-tool-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+.related-tool-card:hover,
+.related-tool-card:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-2);
+  border-color: var(--color-primary);
+}
+
+.related-tool-card:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.related-tool-card__icon {
+  font-size: var(--fs-4);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.related-tool-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.related-tool-card__name {
+  color: var(--color-heading);
+  font-weight: 600;
+  font-size: var(--fs-3);
+}
+
+.related-tool-card__desc {
+  color: var(--color-text-muted);
+  font-size: var(--fs-2);
+  line-height: 1.5;
+}
+
+.related-tools-blog-link {
+  margin-top: var(--space-5);
+  margin-bottom: 0;
+}
+
+/* Underline comes from `.seo-content a` (base.css, WCAG 1.4.1) — only colour/weight added here. */
+.related-tools-blog-link a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
   .features-grid {
@@ -288,6 +357,10 @@
   }
 
   .use-cases {
+    grid-template-columns: 1fr;
+  }
+
+  .related-tools-grid {
     grid-template-columns: 1fr;
   }
 

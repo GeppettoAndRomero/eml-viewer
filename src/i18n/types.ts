@@ -43,4 +43,14 @@ export interface ToolContent {
     colophon: string; // AI 開示を含む1行（前面化しない）
     securityText: string; // 脆弱性報告（SECURITY.md）へのリンク文言
   };
+
+  /**
+   * 関連ツール・技術記事セクションの UI 文言（#177）。カード自体のテキスト（ツール名/説明）は
+   * tools.json 由来の生成データ（@/data/relatedTools.generated）から来るため、ここは章見出しと
+   * 記事リンク文言のみ。footer と同様、全ツール共通の chrome 文言でツールごとに同一値でよい。
+   */
+  related: {
+    h2: string; // "Related tools"
+    blogLinkText: string; // "Read the technical notes"（この技術記事 /blog/<slug>/ へのリンク文言）
+  };
 }
